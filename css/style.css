@@ -51,7 +51,7 @@ body{}
 	            margin-left: 20px;
 
                }
-#mark{
+.mark{
 	  position: absolute;
 	  right: 16.5%;
 	  color: green;
@@ -60,7 +60,7 @@ body{}
 	  display: none;
 
      }
-#delete{
+.delete{
         position: absolute;
         right: 12%;
         color: red;
@@ -73,10 +73,10 @@ body{}
       right: 16%;
       display: none;
        }
-.row_list_html:hover #mark {
+.row_list_html:hover .mark {
 display: inline-block;
 }  
-.row_list_html:hover  #delete {
+.row_list_html:hover  .delete {
 display: inline-block;
 } 
 .row_list_html:hover #break{
@@ -85,3 +85,12 @@ display: inline-block;
 .row_list_html:hover {
 border-bottom-color: #000;
 }                                
+
+.markColorCheck{
+background: green;
+
+}
+.deleteColorCheck{
+
+  display: none;
+}
