@@ -1,63 +1,116 @@
 
 $(document).ready(function(){
-var id ={};
-var vid =0;
+	getData();
   $("#but_add_task").click(function(){
       
-      printList($("#input_task").val())
-
+	  printList($("#input_task").val())
+	  
   });
-
-/*$(".mark").click(function(){
-  	
-     alert($(this).attr("class"));
-   
-  });
-*/
 
  
   function printList(data){
 
   	if (data.length != 0) {
-  		     vid=vid+1;
-  		     id[vid]=vid ;
-  		     for (var i = 0; i < id.length; i++) {
-  		     	
-  		     }
+			   
+			   $.ajax({
+				
+				url: "/todoList_js/insert.php",
+				method: "POST",
+				data: { text_notes: data}
+			  })
+				.done(function( msg ) {
+				  alert( "Saved task: " + msg ); 
+				  getData();
+				});
+				$("#input_task").val("");
 
-             $(".row_list").append('<div id="'+id[vid]+'" class="row_list_html ">\
-	 		     <label id="list_name_html">'+data+'</label>\
-	 		     <input id="'+id[vid]+'" class="mark" onclick="Mark(this)"   type="button" value="Mark as Done" name="">\
-	 		     <label id="break">|</label>\
-	 		     <input id="'+id[vid]+'" class="delete" onclick="Delete(this)"  type="button" value="Delete" name="">\
-	             </div>');	
-             $("#input_task").val("");
+         
   	}else
   	{
-  		alert("input is empty");
+		  alert("input is empty");  
+		 
   	}
 
   }
-
-
-
-
-
- 
 
 });
 
 function Mark(x){
 
-//alert($(x).attr("id"));
-
-//$("#"+$(x).attr("id")).css({"display": "none"});
-$("#"+$(x).attr("id")).addClass("markColorCheck");
-  }
+   $.ajax({
+				
+	url: "/todoList_js/updateMark.php",
+	method: "POST",
+	data: {id: $(x).attr("id"),mark:1}
+	
+  })
+	.done(function( msg ) {
+		alert( "mark as do task: " + msg ); 
+		getData();
+	});
+}
 
 
   function Delete(x){
+	
+	$.ajax({
+				
+		url: "/todoList_js/delete.php",
+		method: "POST",
+		data: {id: $(x).attr("id")}
+		
+	  })
+		.done(function( msg ) {
+			alert( "deleted task: " + msg ); 
+			getData();
+		});
 
-    $("#"+$(x).attr("id")).addClass("deleteColorCheck");
+
+  }
+
+  function  ChangeItem (x) {
+	  
+	$.ajax({
+				
+		url: "/todoList_js/changeItem.php",
+		method: "POST",
+		data: {id: $(x).attr("id")}
+		
+	  })
+		.done(function( msg ) {
+			$(".row_list").html(msg);
+		});
+
+  }
+
+  function Update(x) {
+
+	var textGet = $("#list_name_html_change").val();
+
+	$.ajax({
+				
+		url: "/todoList_js/update.php",
+		method: "POST",
+		data: {id: $(x).attr("id"),task:textGet}
+		
+	  })
+		.done(function( msg ) {
+			alert( "update task: " + msg ); 
+			getData();
+		});
+		
+  }
+
+  function getData(){
+
+	$.ajax({
+				
+		url: "/todoList_js/getAllList.php",
+		
+	  })
+		.done(function( msg ) {
+			$(".row_list").html(msg);
+		});
+     
 
   }

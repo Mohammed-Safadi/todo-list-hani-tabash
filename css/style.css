@@ -38,7 +38,7 @@ body{}
 .row_list_html{
          width: 100%;
          border-width: 2px;
-         margin-top: 40px;
+         margin-top: 20px;
          border-style: solid;
          border-bottom-color:#f3f3f3;
          border-top-style:none; 
@@ -48,18 +48,38 @@ body{}
 
          }
 #list_name_html{
-	            margin-left: 20px;
-
+                 margin-left: 20px;
+                 padding: 10px;
+                 width:50% ;
+                 border-radius: 10px;
+                 font-size: 16px;
                }
+#list_name_html_change{
+                    margin-left: 20px;
+                    padding: 10px;
+                    width:50% ;
+                    border-radius: 10px;
+                    font-size: 16px;    
+                   }             
 .mark{
 	  position: absolute;
-	  right: 16.5%;
+	  right: 20.5%;
 	  color: green;
 	  background: none;
 	  border-style: none;
 	  display: none;
 
      }
+.update{
+      position: absolute;
+      right: 16.5%;
+      color: blue;
+      background: none;
+      border-style: none;
+      display: none;
+   
+        }
+
 .delete{
         position: absolute;
         right: 12%;
@@ -68,29 +88,57 @@ body{}
 	    border-style: none;
 	    display: none;
        }
+.save{
+      color: #fff;
+      background: green;
+      border-radius: 5px;
+      font-size: 16px;
+      padding: 5px;
+      border-color: aqua;
+}       
 #break{
       position: absolute;
       right: 16%;
       display: none;
        }
+ #break2{
+          position: absolute;
+          right: 20.5%;
+          display: none;
+           }       
 .row_list_html:hover .mark {
 display: inline-block;
 }  
 .row_list_html:hover  .delete {
 display: inline-block;
 } 
+.row_list_html:hover  .update {
+     display: inline-block;
+     } 
 .row_list_html:hover #break{
 display: inline-block;
-}  
+}
+.row_list_html:hover #break2{
+     display: inline-block;
+     }   
 .row_list_html:hover {
 border-bottom-color: #000;
 }                                
 
 .markColorCheck{
 background: green;
+color: #fff;
+border-radius: 20px;
+padding-top: 10px;
 
 }
 .deleteColorCheck{
 
   display: none;
+}
+.resultTaskeNull{
+   width: 100%;
+   text-align: center;
+   color: #087af6;
+   margin-top: 50px;
 }
